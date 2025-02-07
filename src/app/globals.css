@@ -41,10 +41,18 @@ dd {
 /* 공통 */
 .layout-width {
   max-width: 1300px;
-  min-width: 1000px;
-  margin: 0 auto;
+  margin: 0 10px;
 }
 
 .main-content {
-  min-height: 600px;
+  display: flex;
+}
+
+.main-content > aside {
+  width: 220px;
+}
+
+.main-content > section {
+  flex-grow: 1;
+  padding: 50px;
 }
