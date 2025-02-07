@@ -11,7 +11,7 @@ const colors = {
 }
 
 export const buttonColors = {
-  primary: [colors.primary, colors.white], // [주조색, 폰트 색]
+  primary: [colors.primary, colors.white],
   secondary: [colors.secondary, colors.white],
   success: [colors.success, colors.white],
   danger: [colors.danger, colors.white],

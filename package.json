@@ -1,7 +1,7 @@
 {
   "name": "react-front-admin",
   "version": "0.1.0",
-  "private": false,
+  "private": true,
   "scripts": {
     "dev": "next dev -p 3100 --turbopack",
     "build": "next build",

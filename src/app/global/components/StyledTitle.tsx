@@ -1,12 +1,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 'use client'
-
 import { useContext, useLayoutEffect } from 'react'
 import { styled } from 'styled-components'
 import CommonContext from '../contexts/CommonContext'
 import sizes from '../styles/sizes'
 import colors from '../styles/colors'
-
 const { big } = sizes
 const { dark } = colors
 

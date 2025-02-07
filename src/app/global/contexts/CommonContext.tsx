@@ -1,7 +1,10 @@
 'use client'
-
 import { createContext, useState } from 'react'
 import { Helmet, HelmetProvider } from 'react-helmet-async'
+import { setDefaultLocale } from 'react-datepicker'
+import { ko } from 'date-fns/locale'
+
+setDefaultLocale(ko)
 
 type ContextType = {
   state?: { title?: string }
@@ -13,7 +16,7 @@ const CommonContext = createContext<ContextType>({})
 const CommonProvider = ({ children }) => {
   const [title, setTitle] = useState<string | undefined>()
 
-  const value = {
+  const value: ContextType = {
     state: { title },
     actions: { setTitle },
   }

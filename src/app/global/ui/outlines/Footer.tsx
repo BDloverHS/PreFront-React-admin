@@ -1,11 +1,10 @@
 'use client'
-
 import React from 'react'
 import { styled } from 'styled-components'
 import colors from '../../styles/colors'
 const { dark, light } = colors
 
-const StyleFooter = styled.footer`
+const StyledFooter = styled.footer`
   background: ${dark};
   min-height: 200px;
   color: ${light};
@@ -13,9 +12,9 @@ const StyleFooter = styled.footer`
 
 const Footer = () => {
   return (
-    <StyleFooter>
+    <StyledFooter>
       <div className="layout-width">사이트 하단 영역</div>
-    </StyleFooter>
+    </StyledFooter>
   )
 }
 

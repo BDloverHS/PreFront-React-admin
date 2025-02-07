@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
-
 * {
   font-family: 'Nanum Gothic', serif;
   box-sizing: border-box;
@@ -40,7 +39,7 @@ dd {
 }
 
 /* 공통 */
-.layotut-width {
+.layout-width {
   max-width: 1300px;
   min-width: 1000px;
   margin: 0 auto;
