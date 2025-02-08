@@ -1,5 +1,4 @@
 'use server'
-
 import { cookies } from 'next/headers'
 
 export default async function apiRequest(url, method = 'GET', body) {
@@ -10,10 +9,9 @@ export default async function apiRequest(url, method = 'GET', body) {
 
   let headers = null
   const options = { method }
-
-  if (token && token.value.trim()) {
+  if (token?.value && token?.value?.trim()) {
     headers = {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token.value}`,
     }
   }
 

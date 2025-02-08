@@ -120,9 +120,9 @@ const JoinForm = ({ form, onClick, onChange, onSelectDate, actionState }) => {
           type="text"
           name="phoneNumber"
           placeholder="휴대폰번호"
-          color="dark"
           value={form?.phoneNumber ?? ''}
           onChange={onChange}
+          color="dark"
         />
         <Messages color="danger">{errors?.phoneNumber}</Messages>
 
@@ -192,7 +192,7 @@ const JoinForm = ({ form, onClick, onChange, onSelectDate, actionState }) => {
             {form?.requiredTerms3 ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
             개인정보 수집 및 이용에 동의합니다.
           </div>
-          <Messages color="danger">{errors?.requiredTerms3}</Messages>
+          <Messages color="danger">{errors?.requiredTerms3} </Messages>
 
           <div
             className="terms-row"

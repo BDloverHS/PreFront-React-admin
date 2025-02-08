@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation'
 import { format } from 'date-fns'
 import { cookies } from 'next/headers'
 import apiRequest from '@/app/global/libs/apiRequest'
+import { revalidatePath } from 'next/cache'
 
 /**
  * 회원가입 처리
@@ -57,8 +58,8 @@ export const processJoin = async (params, formData: FormData) => {
 
   // 주소 항목 검증
   if (
-    !form?.zipCode ||
-    !form?.zipCode?.trim() ||
+    !form.zipCode ||
+    !form.zipCode?.trim() ||
     !form.address ||
     !form.address?.trim()
   ) {
@@ -67,11 +68,10 @@ export const processJoin = async (params, formData: FormData) => {
     hasErrors = true
   }
   // 필수 항목 검증 E
-
-  /* 비밀번호와 비밀번호 확인 일치 여부 */
+  // 비밀번호와 비밀번호 확인 일치여부
   if (form?.password && form?.password !== form?.confirmPassword) {
     errors.confirmPassword = errors.confirmPassword ?? []
-    errors.confirmPassword.push('비밀번ㄹ호가 일치하지 않습니다.')
+    errors.confirmPassword.push('비밀번호가 일치하지 않습니다.')
     hasErrors = true
   }
 
@@ -100,6 +100,7 @@ export const processJoin = async (params, formData: FormData) => {
   if (hasErrors) {
     return errors
   }
+
   // 회원 가입 완료 후 이동
   redirect(redirectUrl)
 }
@@ -115,6 +116,7 @@ export const processLogin = async (params, formData: FormData) => {
 
   let errors = {}
   let hasErrors = false
+
   // 필수 항목 검증 S
   const email = formData.get('email')
   const password = formData.get('password')
@@ -124,17 +126,17 @@ export const processLogin = async (params, formData: FormData) => {
     hasErrors = true
   }
 
-  if (!password || !password?.trim()) {
+  if (!password || !password.trim()) {
     errors.password = errors.password ?? []
     errors.password.push('비밀번호를 입력하세요.')
     hasErrors = true
   }
+
   // 필수 항목 검증 E
 
   // 서버 요청 처리 S
   if (!hasErrors) {
     const apiUrl = process.env.API_URL + '/member/login'
-
     try {
       const res = await fetch(apiUrl, {
         method: 'POST',
@@ -147,7 +149,6 @@ export const processLogin = async (params, formData: FormData) => {
       const result = await res.json()
       if (res.status === 200 && result.success) {
         // 회원 인증 성공
-        // 회원 인증
         const cookie = await cookies()
         cookie.set('token', result.data, {
           httpOnly: true,
@@ -156,6 +157,7 @@ export const processLogin = async (params, formData: FormData) => {
           path: '/',
         })
       } else {
+        // 회원 인증 실패
         errors = result.message
         hasErrors = true
       }
@@ -169,7 +171,10 @@ export const processLogin = async (params, formData: FormData) => {
     return errors
   }
 
-  // 로그인 성공 시 이동
+  // 캐시 비우기
+  revalidatePath('/', 'layout')
+
+  // 로그인 성공시 이동
   redirect(redirectUrl)
 }
 
@@ -182,12 +187,10 @@ export const getUserInfo = async () => {
   if (!cookie.has('token')) return
 
   try {
-    const res = await apiRequest('/member/login')
+    const res = await apiRequest('/member')
     if (res.status === 200) {
       const result = await res.json()
       return result.success && result.data
-    } else {
-      cookie.delete('token')
     }
   } catch (err) {}
 }

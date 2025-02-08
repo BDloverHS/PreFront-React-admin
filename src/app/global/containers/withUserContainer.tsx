@@ -1,6 +1,5 @@
 'use client'
-
-import useUser from '../hook/useUser'
+import useUser from '../hooks/useUser'
 import LoginContainer from '@/app/member/containers/LoginContainer'
 import { MainContentBox } from '../components/ContentBox'
 import { MainTitle } from '../components/StyledTitle'

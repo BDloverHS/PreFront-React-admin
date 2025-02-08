@@ -32,7 +32,6 @@ const Messages = ({ children, color }) => {
   let messages = Array.isArray(children) ? children : [children]
 
   messages = messages.filter((s) => s && ('' + s)?.trim())
-
   if (messages.length === 0) return <></>
 
   return messages.map((message, i) => (

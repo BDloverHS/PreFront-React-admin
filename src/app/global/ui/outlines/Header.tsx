@@ -4,12 +4,12 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { styled } from 'styled-components'
 import { SlLogin, SlLogout } from 'react-icons/sl'
-import { FaUserPlus, FaHome, FaSearch } from 'react-icons/fa'
+import { FaUserPlus, FaHome } from 'react-icons/fa'
 import classNames from 'classnames'
 import colors from '../../styles/colors'
 import sizes from '../../styles/sizes'
 import logo from '../../assets/images/logo.png'
-import useUser from '../../hook/useUser'
+import useUser from '../../hooks/useUser'
 
 const { light } = colors
 const { big } = sizes
@@ -47,7 +47,7 @@ const StyledHeader = styled.header`
     .layout-width {
       display: flex;
       justify-content: space-between;
-      height: 150px;
+      height: 100px;
       align-items: center;
     }
   }
@@ -70,7 +70,7 @@ const Header = () => {
           <div className="right">
             {isLogin ? (
               <>
-                {name}({email})님, 안녕하세요.
+                {name}({email})님,
                 <a href="/member/api/logout">
                   <SlLogout /> 로그아웃
                 </a>
@@ -96,6 +96,7 @@ const Header = () => {
           </Link>
         </div>
       </div>
+      {/* logo-search */}
     </StyledHeader>
   )
 }

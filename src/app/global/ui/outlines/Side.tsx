@@ -1,5 +1,4 @@
 'use client'
-
 import React, { useContext } from 'react'
 import classNames from 'classnames'
 import styled from 'styled-components'
@@ -23,12 +22,12 @@ const StyledMenus = styled.aside`
     text-align: center;
   }
 
-  &.on {
+  a.on {
     background: ${dark};
     color: ${white};
   }
 
-  & + & {
+  a + a {
     border-top: 2px solid ${dark};
   }
 `
@@ -37,10 +36,11 @@ const Side = () => {
   const {
     state: { menuCode },
   } = useContext(CommonContext)
+
   return (
     <StyledMenus>
       <a href="/member" className={classNames({ on: menuCode === 'member' })}>
-        회원 관리
+        회원관리
       </a>
       <a href="/board" className={classNames({ on: menuCode === 'board' })}>
         게시판 관리

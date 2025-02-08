@@ -1,7 +1,6 @@
 'use client'
-
-import loadable from 'next/dist/shared/lib/loadable.shared-runtime'
-import WithUserContainer from './global/containers/withUserContainer'
+import loadable from '@loadable/component'
+import WithUserContainer from './global/containers/WithUserContainer'
 
 const MainContainer = loadable(() => import('./main/containers/MainContainer'))
 

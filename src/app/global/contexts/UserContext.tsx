@@ -11,7 +11,6 @@ const UserContext = createContext({
 })
 
 const UserProvider = ({ children, _userInfo }) => {
-  console.log("_userInfo", _userInfo)
   const [userInfo, setUserInfo] = useState(_userInfo)
   const [isLogin, setIsLogin] = useState(_userInfo ? true : false)
   const [isAdmin, setIsAdmin] = useState(
@@ -22,7 +21,7 @@ const UserProvider = ({ children, _userInfo }) => {
     if (_userInfo) {
       setUserInfo(_userInfo)
     }
-  },[_userInfo])
+  }, [_userInfo])
 
   const value = {
     state: { userInfo, isLogin, isAdmin },

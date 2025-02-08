@@ -6,10 +6,9 @@ import { getUserInfo } from './member/services/actions'
 import { UserProvider } from './global/contexts/UserContext'
 import 'react-datepicker/dist/react-datepicker.css'
 import './globals.css'
-import Side from './global/ui/outlines/Side'
 
 export const metadata: Metadata = {
-  title: '관리자 페이지',
+  title: '사이트 관리자',
   description: '설명...',
 }
 
@@ -19,17 +18,15 @@ export default async function RootLayout({
   children: React.ReactNode
 }>) {
   const userInfo = await getUserInfo()
-  console.log('userInfo', userInfo)
   return (
     <html lang="ko">
       <body>
         <StyledComponentsRegistry>
           <UserProvider _userInfo={userInfo}>
             <Header />
-            <main>
-              <Side />
+            <main className="main-content">
               <CommonProvider>
-                <main className="main-content">{children}</main>
+                <section>{children}</section>
               </CommonProvider>
             </main>
           </UserProvider>
