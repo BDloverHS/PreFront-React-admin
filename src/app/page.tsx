@@ -1,6 +1,6 @@
 'use client'
 import loadable from '@loadable/component'
-import WithUserContainer from './global/containers/WithUserContainer'
+import WithUserContainer from './global/containers/withUserContainer'
 
 const MainContainer = loadable(() => import('./main/containers/MainContainer'))
 
