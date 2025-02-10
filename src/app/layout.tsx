@@ -25,9 +25,7 @@ export default async function RootLayout({
           <UserProvider _userInfo={userInfo}>
             <Header />
             <main className="main-content">
-              <CommonProvider>
-                <section>{children}</section>
-              </CommonProvider>
+              <CommonProvider>{children}</CommonProvider>
             </main>
           </UserProvider>
         </StyledComponentsRegistry>
