@@ -1,11 +1,11 @@
 'use client'
 import loadable from '@loadable/component'
-import WithUserContainer from './global/containers/withUserContainer'
+import withUserContainer from './global/containers/WithUserContainer'
 
 const MainContainer = loadable(() => import('./main/containers/MainContainer'))
 
 const MainPage = () => {
-  return WithUserContainer(MainContainer)
+  return withUserContainer(MainContainer)
 }
 
 export default MainPage
