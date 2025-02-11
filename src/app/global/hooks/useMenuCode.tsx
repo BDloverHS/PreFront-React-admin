@@ -1,4 +1,5 @@
 'use client'
+
 import { useContext, useEffect } from 'react'
 import CommonContext from '../contexts/CommonContext'
 
@@ -13,5 +14,5 @@ export default function useMenuCode(code, sub) {
     setSubMenuCode(sub)
   }, [code, setMenuCode, sub, setSubMenuCode])
 
-  return { menuCode, subMenuCode, setMenuCode, setSubMenuCode }
+  return [menuCode, subMenuCode, setMenuCode, setSubMenuCode]
 }

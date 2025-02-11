@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { TableRows } from '@/app/global/components/Tables'
-import { MdCheckBox, MdCheckBoxOutlineBlank } from 'react-icons/md'
+// import { MdCheckBox, MdCheckBoxOutlineBlank } from 'react-icons/md'
+import { MdCheckBoxOutlineBlank } from 'react-icons/md'
 
 const StyledForm = styled.form`
   th:nth-of-type(1) {
@@ -32,15 +33,15 @@ const ConfigList = () => {
                 <MdCheckBoxOutlineBlank />
               </th>
               <th>게시판 ID</th>
-              <th>게시판 이름</th>
-              <th>사용여부</th>
+              <th>게시판명</th>
+              <th>사용 여부</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td colSpan={5} className="no-data">
-                게시판이 없습니다.
+                조회 게시판이 없습니다.
               </td>
             </tr>
           </tbody>

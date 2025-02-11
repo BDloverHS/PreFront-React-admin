@@ -9,6 +9,7 @@ type Props = {
 }
 
 const LoginContainer = ({ redirectUrl }: Props) => {
+
   const searchParams = useSearchParams()
   const params = { redirectUrl: redirectUrl ?? searchParams.get('redirectUrl') }
   const actionState = useActionState(processLogin, params)

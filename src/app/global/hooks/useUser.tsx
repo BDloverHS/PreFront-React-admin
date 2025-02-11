@@ -1,3 +1,4 @@
+// 사용자 정의 Hook
 'use client'
 import { useContext, useEffect } from 'react'
 import UserContext from '../contexts/UserContext'
@@ -12,7 +13,7 @@ export default function useUser() {
   useEffect(() => {
     if (!userInfo) {
       ;(async () => {
-        let _userInfo = await getUserInfo()
+        const _userInfo = await getUserInfo()
         if (_userInfo) {
           setUserInfo(_userInfo)
           setIsLogin(_userInfo ? true : false)

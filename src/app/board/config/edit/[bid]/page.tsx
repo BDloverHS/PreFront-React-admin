@@ -1,14 +1,22 @@
+'use client'
 import React from 'react'
-import ConfigContainer from '../../containers/ConfigContainer'
+import loadable from '@loadable/component'
 import { MainTitle } from '@/app/global/components/StyledTitle'
+import WithUserContainer from '@/app/global/containers/WithUserContainer'
 
+const ConfigContainer = loadable(
+  () => import('../../containers/ConfigContainer'),
+)
+
+// params = 경로변수인 bid
 const EditPage = ({ params }) => {
-  const { bid } = params
-  return (
+  const { bid } = React.use<{ bid: string }>(params)
+
+  return WithUserContainer(
     <>
       <MainTitle>게시판 설정 수정</MainTitle>
       <ConfigContainer bid={bid} />
-    </>
+    </>,
   )
 }
 

@@ -1,19 +1,21 @@
 'use client'
+
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { styled } from 'styled-components'
-import { SlLogin, SlLogout } from 'react-icons/sl'
+import { RiLoginBoxLine, RiLogoutBoxLine } from 'react-icons/ri'
 import { FaUserPlus, FaHome } from 'react-icons/fa'
 import classNames from 'classnames'
 import colors from '../../styles/colors'
 import sizes from '../../styles/sizes'
-import logo from '../../assets/images/logo.png'
+import logo from '../../assets/images/logo2.png'
 import useUser from '../../hooks/useUser'
 
 const { light } = colors
 const { big } = sizes
 
+// scss 문법
 const StyledHeader = styled.header`
   &.line {
     border-bottom: 1px solid ${light};
@@ -47,7 +49,7 @@ const StyledHeader = styled.header`
     .layout-width {
       display: flex;
       justify-content: space-between;
-      height: 100px;
+      height: 150px;
       align-items: center;
     }
   }
@@ -55,6 +57,7 @@ const StyledHeader = styled.header`
 
 const Header = () => {
   const { userInfo, isLogin, isAdmin } = useUser()
+
   const email = userInfo?.email
   const name = userInfo?.name
 
@@ -62,6 +65,7 @@ const Header = () => {
     <StyledHeader className={classNames({ line: isAdmin })}>
       <div className="site-top">
         <div className="layout-width">
+          {/* 컨텐츠 영역 */}
           <div className="left">
             <Link href="/">
               <FaHome />
@@ -70,9 +74,10 @@ const Header = () => {
           <div className="right">
             {isLogin ? (
               <>
-                {name}({email})님,
+                {name}({email})님 /
                 <a href="/member/api/logout">
-                  <SlLogout /> 로그아웃
+                  <RiLogoutBoxLine />
+                  로그아웃
                 </a>
               </>
             ) : (
@@ -81,7 +86,7 @@ const Header = () => {
                   <FaUserPlus /> 회원가입
                 </a>
                 <a href="/member/login">
-                  <SlLogin /> 로그인
+                  <RiLoginBoxLine /> 로그인
                 </a>
               </>
             )}
@@ -91,12 +96,12 @@ const Header = () => {
       {/* site-top */}
       <div className="logo-search">
         <div className="layout-width">
+          {/* 컨텐츠 영역 */}
           <Link href="/" className="logo">
-            <Image src={logo} alt="로고" priority={true} />
+            <Image src={logo} alt="로고" priority={true} height={220} />
           </Link>
         </div>
       </div>
-      {/* logo-search */}
     </StyledHeader>
   )
 }

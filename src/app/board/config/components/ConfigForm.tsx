@@ -6,6 +6,9 @@ import { Input, Textarea } from '@/app/global/components/FormComponents'
 import { BigButton, ButtonGroup } from '@/app/global/components/Buttons'
 import Messages from '@/app/global/components/Messages'
 import { SubTitle } from '@/app/global/components/StyledTitle'
+import colors from '@/app/global/styles/colors'
+
+const { primary, white } = colors
 
 const StyledForm = styled.form`
   table {
@@ -13,6 +16,14 @@ const StyledForm = styled.form`
 
     th {
       width: 180px;
+      background: ${primary};
+      color: ${white};
+    }
+
+    td {
+      & > * + * {
+        margin-left: 20px;
+      }
     }
 
     &:last-of-type {
@@ -21,55 +32,67 @@ const StyledForm = styled.form`
   }
 `
 
-const ConfigForm = ({ form, onChange, onClick, actionState }) => {
+const ConfigForm = ({ form, onChange, onClick, onReset, actionState }) => {
   const [errors, formAction, isPending] = actionState
 
   return (
     <StyledForm action={formAction} autoComplete="off">
       <input type="hidden" name="mode" value={form?.mode ?? 'add'} />
+
       <input type="hidden" name="open" value={form?.open ?? false} />
+
       <input type="hidden" name="useEditor" value={form?.useEditor ?? false} />
+
       <input
         type="hidden"
         name="useEditorImage"
         value={form?.useEditorImage ?? false}
       />
+
       <input
         type="hidden"
         name="useAttachFile"
         value={form?.useAttachFile ?? false}
       />
+
       <input
         type="hidden"
         name="useComment"
         value={form?.useComment ?? false}
       />
+
       <input
         type="hidden"
         name="listUnderView"
         value={form?.listUnderView ?? false}
       />
+
       <input
         type="hidden"
         name="locationAfterWriting"
         value={form?.locationAfterWriting ?? 'list'}
       />
+
       <input type="hidden" name="skin" value={form?.skin ?? 'default'} />
+
       <input
         type="hidden"
         name="listAuthority"
         value={form?.listAuthority ?? 'ALL'}
       />
+
       <input
         type="hidden"
         name="viewAuthority"
         value={form?.viewAuthority ?? 'ALL'}
       />
+
       <input
         type="hidden"
         name="writeAuthority"
         value={form?.writeAuthority ?? 'ALL'}
       />
+
       <input
         type="hidden"
         name="commentAuthority"
@@ -100,8 +123,9 @@ const ConfigForm = ({ form, onChange, onClick, actionState }) => {
               <Messages color="danger">{errors?.bid}</Messages>
             </td>
           </tr>
+
           <tr>
-            <th>게시판 이름</th>
+            <th>게시판명</th>
             <td>
               <Input
                 type="text"
@@ -112,8 +136,9 @@ const ConfigForm = ({ form, onChange, onClick, actionState }) => {
               <Messages color="danger">{errors?.name}</Messages>
             </td>
           </tr>
+
           <tr>
-            <th>사용여부</th>
+            <th>게시판 공개</th>
             <td>
               <span onClick={() => onClick('open', true)}>
                 {form?.open ? (
@@ -121,19 +146,19 @@ const ConfigForm = ({ form, onChange, onClick, actionState }) => {
                 ) : (
                   <MdRadioButtonUnchecked />
                 )}
-                사용
+                공개
               </span>
-
               <span onClick={() => onClick('open', false)}>
                 {form?.open ? (
                   <MdRadioButtonUnchecked />
                 ) : (
                   <MdRadioButtonChecked />
                 )}
-                미사용
+                미공개
               </span>
             </td>
           </tr>
+
           <tr>
             <th>1페이지 게시글 수</th>
             <td>
@@ -145,8 +170,9 @@ const ConfigForm = ({ form, onChange, onClick, actionState }) => {
               />
             </td>
           </tr>
+
           <tr>
-            <th>페이지 링크수</th>
+            <th>페이지 링크 수</th>
             <td>
               <Input
                 type="number"
@@ -156,6 +182,7 @@ const ConfigForm = ({ form, onChange, onClick, actionState }) => {
               />
             </td>
           </tr>
+
           <tr>
             <th>에디터 사용</th>
             <td>
@@ -167,7 +194,6 @@ const ConfigForm = ({ form, onChange, onClick, actionState }) => {
                 )}
                 사용
               </span>
-
               <span onClick={() => onClick('useEditor', false)}>
                 {form?.useEditor ? (
                   <MdRadioButtonUnchecked />
@@ -178,6 +204,7 @@ const ConfigForm = ({ form, onChange, onClick, actionState }) => {
               </span>
             </td>
           </tr>
+
           <tr>
             <th>에디터 이미지 첨부</th>
             <td>
@@ -189,7 +216,6 @@ const ConfigForm = ({ form, onChange, onClick, actionState }) => {
                 )}
                 사용
               </span>
-
               <span onClick={() => onClick('useEditorImage', false)}>
                 {form?.useEditorImage ? (
                   <MdRadioButtonUnchecked />
@@ -200,6 +226,7 @@ const ConfigForm = ({ form, onChange, onClick, actionState }) => {
               </span>
             </td>
           </tr>
+
           <tr>
             <th>파일 첨부</th>
             <td>
@@ -211,7 +238,6 @@ const ConfigForm = ({ form, onChange, onClick, actionState }) => {
                 )}
                 사용
               </span>
-
               <span onClick={() => onClick('useAttachFile', false)}>
                 {form?.useAttachFile ? (
                   <MdRadioButtonUnchecked />
@@ -222,8 +248,9 @@ const ConfigForm = ({ form, onChange, onClick, actionState }) => {
               </span>
             </td>
           </tr>
+
           <tr>
-            <th>사용여부</th>
+            <th>댓글</th>
             <td>
               <span onClick={() => onClick('useComment', true)}>
                 {form?.useComment ? (
@@ -233,7 +260,6 @@ const ConfigForm = ({ form, onChange, onClick, actionState }) => {
                 )}
                 사용
               </span>
-
               <span onClick={() => onClick('useComment', false)}>
                 {form?.useComment ? (
                   <MdRadioButtonUnchecked />
@@ -244,8 +270,9 @@ const ConfigForm = ({ form, onChange, onClick, actionState }) => {
               </span>
             </td>
           </tr>
+
           <tr>
-            <th>글보기페이지 목록</th>
+            <th>하단 게시글 목록</th>
             <td>
               <span onClick={() => onClick('listUnderView', true)}>
                 {form?.listUnderView ? (
@@ -255,7 +282,6 @@ const ConfigForm = ({ form, onChange, onClick, actionState }) => {
                 )}
                 사용
               </span>
-
               <span onClick={() => onClick('listUnderView', false)}>
                 {form?.listUnderView ? (
                   <MdRadioButtonUnchecked />
@@ -266,8 +292,9 @@ const ConfigForm = ({ form, onChange, onClick, actionState }) => {
               </span>
             </td>
           </tr>
+
           <tr>
-            <th>글작성 후 이동</th>
+            <th>게시글 작성 후 이동</th>
             <td>
               <span onClick={() => onClick('locationAfterWriting', 'list')}>
                 {form?.locationAfterWriting === 'list' ? (
@@ -275,7 +302,7 @@ const ConfigForm = ({ form, onChange, onClick, actionState }) => {
                 ) : (
                   <MdRadioButtonUnchecked />
                 )}
-                글 목록
+                게시글 목록
               </span>
 
               <span onClick={() => onClick('locationAfterWriting', 'view')}>
@@ -284,10 +311,11 @@ const ConfigForm = ({ form, onChange, onClick, actionState }) => {
                 ) : (
                   <MdRadioButtonUnchecked />
                 )}
-                글 보기
+                게시글 보기
               </span>
             </td>
           </tr>
+
           <tr>
             <th>게시판 스킨</th>
             <td>
@@ -297,7 +325,7 @@ const ConfigForm = ({ form, onChange, onClick, actionState }) => {
                 ) : (
                   <MdRadioButtonUnchecked />
                 )}
-                기본(default)
+                기본 (default)
               </span>
 
               <span onClick={() => onClick('skin', 'gallery')}>
@@ -306,7 +334,7 @@ const ConfigForm = ({ form, onChange, onClick, actionState }) => {
                 ) : (
                   <MdRadioButtonUnchecked />
                 )}
-                갤러리(gallery)
+                갤러리 (gallery)
               </span>
             </td>
           </tr>
@@ -321,7 +349,7 @@ const ConfigForm = ({ form, onChange, onClick, actionState }) => {
             <td>
               <Textarea
                 name="category"
-                placeholder="분류 여러개는 엔터키를 눌러서 다음칸에 입력"
+                placeholder="여러개 분류시 Enter를 눌러서 다음 줄에 입력"
                 height={200}
                 value={form?.category ?? ''}
                 onChange={onChange}
@@ -335,7 +363,7 @@ const ConfigForm = ({ form, onChange, onClick, actionState }) => {
       <TableCols>
         <tbody>
           <tr>
-            <th>글목록 접근 권한</th>
+            <th>게시글 목록 접근 권한</th>
             <td>
               <span onClick={() => onClick('listAuthority', 'ALL')}>
                 {form?.listAuthority === 'ALL' ? (
@@ -365,7 +393,7 @@ const ConfigForm = ({ form, onChange, onClick, actionState }) => {
           </tr>
 
           <tr>
-            <th>글보기 접근 권한</th>
+            <th>게시글 보기 권한</th>
             <td>
               <span onClick={() => onClick('viewAuthority', 'ALL')}>
                 {form?.viewAuthority === 'ALL' ? (
@@ -395,7 +423,7 @@ const ConfigForm = ({ form, onChange, onClick, actionState }) => {
           </tr>
 
           <tr>
-            <th>글쓰기 권한</th>
+            <th>게시글 작성 권한</th>
             <td>
               <span onClick={() => onClick('writeAuthority', 'ALL')}>
                 {form?.writeAuthority === 'ALL' ? (
@@ -425,7 +453,7 @@ const ConfigForm = ({ form, onChange, onClick, actionState }) => {
           </tr>
 
           <tr>
-            <th>댓글 작성권한</th>
+            <th>댓글 작성 권한</th>
             <td>
               <span onClick={() => onClick('commentAuthority', 'ALL')}>
                 {form?.commentAuthority === 'ALL' ? (
@@ -457,12 +485,18 @@ const ConfigForm = ({ form, onChange, onClick, actionState }) => {
       </TableCols>
 
       <ButtonGroup width={450} className="button-group center">
-        <BigButton type="reset" color="white" disabled={isPending}>
-          다시입력
+        <BigButton
+          type="reset"
+          color="info"
+          disabled={isPending}
+          onClick={onReset}
+        >
+          재입력
         </BigButton>
         <BigButton type="submit" color="dark" disabled={isPending}>
-          등록하기
+          {form?.mode === 'edit' ? '수정' : '등록'}
         </BigButton>
+        <Messages color="danger">{errors?.global}</Messages>
       </ButtonGroup>
     </StyledForm>
   )
