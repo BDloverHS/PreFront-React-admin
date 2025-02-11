@@ -2,11 +2,12 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import colors from '../styles/colors'
 import sizes from '../styles/sizes'
+import type { CommonType } from '../types/StyledType'
 
 const { info } = colors
 const { small } = sizes
 
-const Message = styled.div`
+const Message = styled.div<CommonType>`
   box-shadow: 2px 2px 5px ${info};
   color: ${info};
   font-size: ${small};
