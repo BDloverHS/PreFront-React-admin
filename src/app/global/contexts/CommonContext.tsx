@@ -34,7 +34,7 @@ const CommonProvider = ({ children }) => {
   const [subMenuCode, setSubMenuCode] = useState<string | undefined>()
 
   const value: ContextType = {
-    state: { title, menuCode, subMenusCode },
+    state: { title, menuCode, subMenuCode },
     actions: { setTitle, setMenuCode, setSubMenuCode },
   }
 
@@ -44,8 +44,10 @@ const CommonProvider = ({ children }) => {
         <>
           <Helmet>{title && <title>{title}</title>}</Helmet>
           {isAdmin && <Side />}
-          <section>{children}</section>
-          <SubMenus />
+          <section>
+            {isAdmin && <SubMenus />}
+            {children}
+          </section>
         </>
       </HelmetProvider>
     </CommonContext.Provider>

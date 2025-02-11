@@ -31,6 +31,7 @@ export const Input = styled.input<CommonType>`
     width: ${width}px;
   `}
 `
+
 export const Textarea = styled.textarea<CommonType>`
   ${commonStyle}
   height: 150px;

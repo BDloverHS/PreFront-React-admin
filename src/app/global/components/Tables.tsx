@@ -28,7 +28,7 @@ export const TableCols = styled.table`
   }
 
   & + & {
-    margin: 30px;
+    margin-top: 30px;
   }
 `
 

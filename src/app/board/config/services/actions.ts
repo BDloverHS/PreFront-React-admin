@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation'
 import apiRequest from '@/app/global/libs/apiRequest'
 
 /**
- * 게시판 설정 등록 및 수정
+ * 게시판 설정 등록 & 수정
  *
  * Server Action Component
  *

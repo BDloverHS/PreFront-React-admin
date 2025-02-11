@@ -18,7 +18,7 @@ type SearchType = {
   limit?: number
 }
 
-const ConfigContainer = () => {
+const ConfigListContainer = () => {
   useMenuCode('board', 'configList')
   const [search, setSearch] = useState<SearchType>({})
   const [_search, _setSearch] = useState<SearchType>({})
@@ -66,4 +66,4 @@ const ConfigContainer = () => {
   )
 }
 
-export default React.memo(ConfigContainer)
+export default React.memo(ConfigListContainer)

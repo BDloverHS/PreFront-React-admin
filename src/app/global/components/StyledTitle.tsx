@@ -13,13 +13,7 @@ const { medium, big } = sizes
 const { dark } = colors
 
 // children = 사이트 제목
-const _MainTitle = ({
-  children,
-  className,
-}: {
-  children: string
-  className?: string
-}) => {
+const _MainTitle = ({ children, className } : {children : string, className?: string}) => {
   const {
     actions: { setTitle },
   } = useContext(CommonContext)
