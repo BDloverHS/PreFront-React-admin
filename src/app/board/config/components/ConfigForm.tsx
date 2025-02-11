@@ -26,7 +26,7 @@ const ConfigForm = ({ form, onChange, onClick, actionState }) => {
 
   return (
     <StyledForm action={formAction} autoComplete="off">
-      <input type="hidden" name="mode" value={form?.open ?? 'add'} />
+      <input type="hidden" name="mode" value={form?.mode ?? 'add'} />
       <input type="hidden" name="open" value={form?.open ?? false} />
       <input type="hidden" name="useEditor" value={form?.useEditor ?? false} />
       <input

@@ -12,7 +12,7 @@ const SubMenus = loadable(() => import('../components/SubMenus'))
 setDefaultLocale(ko)
 
 type ContextType = {
-  state?: { title?: string; menuCode?: string }
+  state?: { title?: string; menuCode?: string; subMenuCode?: string }
   actions?: {
     setTitle?: (title: string) => void
     setMenuCode?: (code: string) => void
