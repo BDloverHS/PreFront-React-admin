@@ -14,7 +14,7 @@ const EditPage = ({ params }) => {
 
   return WithUserContainer(
     <>
-      <MainTitle>게시판 설정 수정</MainTitle>
+      <MainTitle>게시판 수정</MainTitle>
       <ConfigContainer bid={bid} />
     </>,
   )

@@ -13,6 +13,11 @@ const UserContext = createContext({
 })
 
 const UserProvider = ({ children, _userInfo }) => {
+  /* const user = {
+    email: 'user1@test.org',
+    name: '이이름',
+  } */
+
   const [userInfo, setUserInfo] = useState(_userInfo)
 
   const [isLogin, setIsLogin] = useState(_userInfo ? true : false)

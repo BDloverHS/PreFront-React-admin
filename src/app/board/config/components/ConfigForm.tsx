@@ -108,18 +108,17 @@ const ConfigForm = ({ form, onChange, onClick, onReset, actionState }) => {
               {form?.mode === 'edit' ? (
                 <>
                   {form?.bid}
-                  <input type="hidden" name="bid" value={form?.bid ?? ''} />
+                  <input type="hidden" name="bid" value={form?.bid} />
                 </>
               ) : (
-                <>
-                  <Input
-                    type="text"
-                    name="bid"
-                    value={form?.bid ?? ''}
-                    onChange={onChange}
-                  />
-                </>
+                <Input
+                  type="text"
+                  name="bid"
+                  value={form?.bid ?? ''}
+                  onChange={onChange}
+                />
               )}
+
               <Messages color="danger">{errors?.bid}</Messages>
             </td>
           </tr>
