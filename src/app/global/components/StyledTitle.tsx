@@ -5,7 +5,7 @@ import { styled } from 'styled-components'
 import CommonContext from '../contexts/CommonContext'
 import sizes from '../styles/sizes'
 import colors from '../styles/colors'
-const { big } = sizes
+const { big, medium } = sizes
 const { dark } = colors
 
 const _MainTitle = ({ children, className }) => {
@@ -26,4 +26,11 @@ export const MainTitle = styled(_MainTitle)`
   font-size: ${big};
   border-bottom: 2px solid ${dark};
   color: ${dark};
+`
+
+export const SubTitle = styled.h2`
+  padding: 0;
+  margin: 0 0 15px;
+  font-size: ${medium};
+  color: ${dark}
 `
